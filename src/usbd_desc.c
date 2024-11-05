@@ -3,11 +3,11 @@
 #include "usbd_conf.h"
 #include "system.h"
 
-#define USBD_VID			0xad50
+#define USBD_VID			0x8850
 #define USBD_LANGID_STRING		1033
-#define USBD_MANUFACTURER_STRING	"Protofusion Labs"
+#define USBD_MANUFACTURER_STRING	"Vimdrones Inc Limited"
 #define USBD_PID_FS			0x60c4
-#define USBD_PRODUCT_STRING_FS		"CANable" " " GIT_VERSION " " GIT_REMOTE
+#define USBD_PRODUCT_STRING_FS		"DroneCAN Dongle"
 #define USBD_CONFIGURATION_STRING_FS    "CDC Config"
 #define USBD_INTERFACE_STRING_FS	"CDC Interface"
 

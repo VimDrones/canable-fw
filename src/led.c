@@ -46,7 +46,7 @@ void led_green_on(void)
 // Turn green LED on
 void led_green_off(void)
 {
-	HAL_GPIO_WritePin(LED_GREEN, 0);
+	HAL_GPIO_WritePin(LED_GREEN, 1);
 }
 
 
@@ -71,7 +71,7 @@ void led_blue_on(void)
 	// This prevents a solid status LED on a busy canbus
 	if(led_blue_laston == 0 && HAL_GetTick() - led_blue_lastoff > LED_DURATION)
 	{
-		HAL_GPIO_WritePin(LED_BLUE, 1);
+		HAL_GPIO_WritePin(LED_BLUE, 0);
 		led_blue_laston = HAL_GetTick();
 	}
 }

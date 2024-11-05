@@ -10,6 +10,8 @@
 #include "printf.h"
 #include "usbd_cdc_if.h"
 
+#define ACK "\r"
+
 
 // Parse an incoming CAN frame into an outgoing slcan message
 int8_t slcan_parse_frame(uint8_t *buf, CAN_RxHeaderTypeDef *frame_header, uint8_t* frame_data)
@@ -112,11 +114,13 @@ int8_t slcan_parse_str(uint8_t *buf, uint8_t len)
 		case 'O':
 			// Open channel command
 			can_enable();
+            CDC_Transmit_FS(ACK, 1); // Send ACK
 			return 0;
 
 		case 'C':
 			// Close channel command
 			can_disable();
+            CDC_Transmit_FS(ACK, 1); // Send ACK
 			return 0;
 
 		case 'S':
@@ -129,8 +133,11 @@ int8_t slcan_parse_str(uint8_t *buf, uint8_t len)
 			}
 
 			can_set_bitrate(buf[1]);
+            CDC_Transmit_FS(ACK, 1); // Send ACK
 			return 0;
-
+        case 'F':
+            CDC_Transmit_FS(ACK, 1); // Send ACK
+			return 0;
 		case 'm':
 		case 'M':
 			// Set mode command
